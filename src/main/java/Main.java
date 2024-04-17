@@ -1,8 +1,4 @@
-import util.FileHelper;
-import util.Hub;
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import Backend.Submit;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,6 +9,12 @@ public class Main {
                 "}";
         long currentTimeMillis = System.currentTimeMillis();
         System.out.println(currentTimeMillis);
-        Hub.submit(currentTimeMillis, 0, code);
+        try {
+            String result = Submit.go(currentTimeMillis, 0, code);
+            System.out.println(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("An error has occurred: " + e.getMessage());
+        }
     }
 }
